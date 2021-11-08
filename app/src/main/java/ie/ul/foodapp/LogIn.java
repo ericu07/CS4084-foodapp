@@ -52,10 +52,11 @@ public class LogIn extends AppCompatActivity {
 
             if(resultCode == RESULT_OK){
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                System.out.println("sign in succesfull \n" +
+                System.out.println("Sign In Succesfull \n" +
                         "name = " + user.getDisplayName() + "\n" +
                         "email = " + user.getEmail() + "\n" +
                         "id = " + user.getUid());
+                startActivity(new Intent(LogIn.this, MainActivity.class));
             }
             else {
                 if(response == null){
