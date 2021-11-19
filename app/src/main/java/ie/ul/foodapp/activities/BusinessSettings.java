@@ -1,6 +1,13 @@
 package ie.ul.foodapp.activities;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.RectF;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -17,13 +24,15 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
-import java.lang.reflect.Array;
 import java.time.LocalTime;
 
 import ie.ul.foodapp.R;
 import ie.ul.foodapp.model.Business;
+import ie.ul.foodapp.utils.BitmapUtils;
 
 public class BusinessSettings extends AppCompatActivity implements TabLayout.OnTabSelectedListener, CompoundButton.OnCheckedChangeListener, TextWatcher {
+
+    protected final int INTENT_CODE_PICK_IMAGE = 1;
 
     protected static class Updater {
 
@@ -248,11 +257,35 @@ public class BusinessSettings extends AppCompatActivity implements TabLayout.OnT
     public void OnClickFabSave (View view) {
         pendingChanges.setName(name.getText().toString());
         selectTab(daysOfTheWeek.getTabAt(daysOfTheWeek.getSelectedTabPosition()));
+        /* TODO save it to database */
         load(pendingChanges);
     }
 
     public void OnClickFabBusinessBanner (View view) {
-        Toast.makeText(getApplicationContext(), "OnClickFabBusinessBanner", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select a business banner"), INTENT_CODE_PICK_IMAGE);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == INTENT_CODE_PICK_IMAGE && resultCode == Activity.RESULT_OK) {
+            final Uri fileURI = data.getData();
+            if (fileURI != null) {
+                Bitmap newBanner;
+                try {
+                    newBanner = MediaStore.Images.Media.getBitmap(this.getContentResolver(), fileURI);
+                } catch (Exception e) {
+                    newBanner = null;
+                }
+
+                pendingChanges.setBanner(BitmapUtils.cropToAspectRatio(newBanner, 2.5f, 1f));
+                banner.setImageBitmap(pendingChanges.getBanner());
+                u.update();
+            }
+        }
     }
 
     @Override
