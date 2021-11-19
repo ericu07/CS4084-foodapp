@@ -14,7 +14,8 @@
         android:layout_margin="8dp"
         android:clickable="true"
         android:focusable="true"
-        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+        android:onClick="OnClickFabCancel" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_save"
@@ -24,7 +25,8 @@
         android:layout_margin="8dp"
         android:clickable="true"
         android:focusable="true"
-        app:srcCompat="@android:drawable/ic_menu_save" />
+        app:srcCompat="@android:drawable/ic_menu_save"
+        android:onClick="OnClickFabSave" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -66,8 +68,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:inputType="textPersonName"
-                        android:text="Name" />
+                        android:inputType="textShortMessage" />
 
                 </LinearLayout>
                 <!-- END : NAME -->
@@ -108,7 +109,9 @@
                             android:focusable="true"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:srcCompat="@android:drawable/ic_menu_gallery" />
+                            app:srcCompat="@android:drawable/ic_menu_gallery"
+                            android:onClick="OnClickFabBusinessBanner" />
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </LinearLayout>
@@ -128,10 +131,11 @@
 
                     <!-- START : DAYS -->
                     <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tabLayout_daysOfTheWeek"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent" >
 
-                        <com.google.android.material.tabs.TabItem
+                            <com.google.android.material.tabs.TabItem
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Mon" />
@@ -165,6 +169,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Sun" />
+
                     </com.google.android.material.tabs.TabLayout>
                     <!-- END : DAYS -->
 
@@ -189,12 +194,13 @@
                             <Switch
                                 android:id="@+id/switch_openThisDay"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"/>
                         </LinearLayout>
                         <!-- END : OPEN THIS DAY -->
 
                         <!-- START : OPENING TIME -->
                         <LinearLayout
+                            android:id="@+id/linearLayout_openingHours"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="vertical">
