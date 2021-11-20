@@ -23,9 +23,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.BusinessSettings" />
+        <activity android:name=".activities.business.BusinessSettings" />
 
-        <activity android:name=".activities.CurrentOffers" />
+        <activity android:name=".activities.business.CurrentOffers" />
 
     </application>
 

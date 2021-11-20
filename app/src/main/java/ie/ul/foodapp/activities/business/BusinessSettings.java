@@ -1,4 +1,4 @@
-package ie.ul.foodapp.activities;
+package ie.ul.foodapp.activities.business;
 
 import android.app.Activity;
 import android.content.Intent;
