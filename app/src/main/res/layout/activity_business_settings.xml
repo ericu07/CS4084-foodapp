@@ -86,7 +86,6 @@
                         android:text="Banner" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/main_content"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
@@ -97,7 +96,7 @@
                             android:adjustViewBounds="true"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+                            tools:srcCompat="@drawable/default_business_banner" />
 
                         <com.google.android.material.floatingactionbutton.FloatingActionButton
                             android:id="@+id/fab_businessBanner"

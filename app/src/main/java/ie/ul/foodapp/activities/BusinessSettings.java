@@ -3,8 +3,6 @@ package ie.ul.foodapp.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.RectF;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -27,8 +25,11 @@ import com.google.android.material.tabs.TabLayout;
 import java.time.LocalTime;
 
 import ie.ul.foodapp.R;
+import ie.ul.foodapp.firebase.FirebaseLink;
 import ie.ul.foodapp.model.Business;
 import ie.ul.foodapp.utils.BitmapUtils;
+import ie.ul.foodapp.utils.StringUtils;
+import ie.ul.foodapp.utils.TimeSpan;
 
 public class BusinessSettings extends AppCompatActivity implements TabLayout.OnTabSelectedListener, CompoundButton.OnCheckedChangeListener, TextWatcher {
 
@@ -142,7 +143,7 @@ public class BusinessSettings extends AppCompatActivity implements TabLayout.OnT
             cancel.setVisibility(View.VISIBLE);
         });
 
-        load(new Business()); /* TODO retrive it from database */
+        load(FirebaseLink.getCurrentBusiness());
     }
 
     /* layout update */
@@ -178,7 +179,7 @@ public class BusinessSettings extends AppCompatActivity implements TabLayout.OnT
 
         /* save current tab */
         save: {
-            Business.TimeSpan openTimeSpan;
+            TimeSpan openTimeSpan;
 
             if (openThisDay.isChecked()) {
                 int[] tmp = new int[4];
@@ -206,7 +207,7 @@ public class BusinessSettings extends AppCompatActivity implements TabLayout.OnT
                     break save; // escape save process
                 }
 
-                openTimeSpan = new Business.TimeSpan(lts[0], lts[1]);
+                openTimeSpan = new TimeSpan(lts[0], lts[1]);
             } else {
                 openTimeSpan = null;
             }
@@ -231,15 +232,15 @@ public class BusinessSettings extends AppCompatActivity implements TabLayout.OnT
 
     protected void updateOnDaySwitch(boolean open) {
         if (open) {
-            Business.TimeSpan openTimeSpan = pendingChanges.getOpeningHours(selectedTab);
+            TimeSpan openTimeSpan = pendingChanges.getOpeningHours(selectedTab);
             if (openTimeSpan == null) {
-                pendingChanges.setOpeningHours(new Business.TimeSpan(), selectedTab);
+                pendingChanges.setOpeningHours(new TimeSpan(), selectedTab);
                 openTimeSpan = pendingChanges.getOpeningHours(selectedTab);
             }
 
             u.skipNextUpdates(2);
-            from.setText(String.format("%02d:%02d", openTimeSpan.getFrom().getHour(), openTimeSpan.getFrom().getMinute()));
-            to.setText(String.format("%02d:%02d", openTimeSpan.getTo().getHour(), openTimeSpan.getTo().getMinute()));
+            from.setText(StringUtils.toString(openTimeSpan.getFrom()));
+            to.setText(StringUtils.toString(openTimeSpan.getFrom()));
         } else {
             pendingChanges.setOpeningHours(null, selectedTab);
         }
@@ -252,7 +253,6 @@ public class BusinessSettings extends AppCompatActivity implements TabLayout.OnT
     public void OnClickFabCancel (View view) {
         load(business);
     }
-
 
     public void OnClickFabSave (View view) {
         pendingChanges.setName(name.getText().toString());

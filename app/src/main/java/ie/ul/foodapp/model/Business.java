@@ -1,52 +1,24 @@
 package ie.ul.foodapp.model;
 
 import android.graphics.Bitmap;
-import android.media.Image;
 
 import androidx.annotation.NonNull;
 
-import java.time.LocalTime;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
+import ie.ul.foodapp.utils.TimeSpan;
 
 public class Business {
-
-    public static class TimeSpan {
-        protected LocalTime from;
-        protected LocalTime to;
-
-        public TimeSpan() {
-            this(LocalTime.of(8, 0), LocalTime.of(20, 0));
-        }
-        public TimeSpan(LocalTime from, LocalTime to) {
-            this.from = from;
-            this.to = to;
-        }
-        public TimeSpan(TimeSpan ts) {
-            this(ts.getFrom(), ts.getTo());
-        }
-
-        @NonNull
-        @Override
-        protected Object clone() {
-            return new TimeSpan(this);
-        }
-
-        public LocalTime getFrom() {
-            return from;
-        }
-
-        public LocalTime getTo() {
-            return to;
-        }
-    }
 
     protected String name;
     protected Bitmap banner;
     protected TimeSpan[] openingHours;
     protected Object localisation;
 
-    protected Object[] previousOffers;
-    protected Object[] currentOffers;
+    protected List<Offer> previousOffers;
+    protected List<Offer> currentOffers;
 
     public Business() {
         name = "My business";
@@ -54,6 +26,8 @@ public class Business {
         openingHours = new TimeSpan[7];
         Arrays.fill(openingHours, null);
         localisation = null;
+        previousOffers = new LinkedList<>();
+        currentOffers = new LinkedList<>();
     }
     public Business(Business b) {
         this.name = b.name;
@@ -61,6 +35,8 @@ public class Business {
         this.openingHours = new TimeSpan[7];
         System.arraycopy(b.openingHours, 0, this.openingHours, 0, this.openingHours.length);
         this.localisation = b.localisation;
+        this.previousOffers = new LinkedList<>();
+        this.currentOffers = new LinkedList<>();
     }
 
 
@@ -106,6 +82,20 @@ public class Business {
 
     public void setLocalisation(Object localisation) {
         this.localisation = localisation;
+    }
+
+    public void addOffer(Offer offer) {
+        currentOffers.add(offer);
+    }
+
+    public List<Offer> getOffers() {
+        return currentOffers;
+    }
+
+    public void archiveOffer(Offer offer) {
+        if (currentOffers.remove(offer)) {
+            previousOffers.add(offer);
+        }
     }
 
 }
