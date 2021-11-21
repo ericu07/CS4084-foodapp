@@ -1,6 +1,7 @@
 package ie.ul.foodapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +47,20 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
 
         public ViewHolder(@NonNull View itemView){
             super(itemView);
+
+            //set onclicker listener
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent = new Intent(v.getContext(), Details.class);
+                    intent.putExtra("title", data.get(getAdapterPosition()));
+                    //intent.putExtra("description", data.get(getAdapterPosition()));
+                    v.getContext().startActivity(intent);
+
+                }
+            });
+
             textTitle = itemView.findViewById(R.id.card1);
             textDescription = itemView.findViewById(R.id.card1Description);
         }
