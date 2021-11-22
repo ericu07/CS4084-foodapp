@@ -3,9 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/ocsio/Desktop/Year 3 Semester 1/CS4084 - MOBILE APPLICATION DEVELOPMENT/CS4084-foodapp/app/src/main/res/layout/activity_log_in.xml" value="0.176" />
+        <entry key="..\:/Users/ocsio/Desktop/Year 3 Semester 1/CS4084 - MOBILE APPLICATION DEVELOPMENT/CS4084-foodapp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2703125" />
+        <entry key="..\:/Users/ocsio/Desktop/Year 3 Semester 1/CS4084 - MOBILE APPLICATION DEVELOPMENT/CS4084-foodapp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2703125" />
+        <entry key="..\:/Users/ocsio/Desktop/Year 3 Semester 1/CS4084 - MOBILE APPLICATION DEVELOPMENT/CS4084-foodapp/app/src/main/res/layout/activity_log_in.xml" value="0.264" />
+        <entry key="..\:/Users/ocsio/Desktop/Year 3 Semester 1/CS4084 - MOBILE APPLICATION DEVELOPMENT/CS4084-foodapp/app/src/main/res/layout/activity_log_in2.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ocsio/Desktop/Year 3 Semester 1/CS4084 - MOBILE APPLICATION DEVELOPMENT/CS4084-foodapp/app/src/main/res/layout/activity_main.xml" value="0.176" />
         <entry key="..\:/Users/ocsio/Desktop/Year 3 Semester 1/CS4084 - MOBILE APPLICATION DEVELOPMENT/CS4084-foodapp/app/src/main/res/layout/activity_maps.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ocsio/Desktop/Year 3 Semester 1/CS4084 - MOBILE APPLICATION DEVELOPMENT/CS4084-foodapp/app/src/main/res/layout/activity_sign_up.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ocsio/Desktop/Year 3 Semester 1/CS4084 - MOBILE APPLICATION DEVELOPMENT/CS4084-foodapp/app/src/main/res/layout/log_in_theme.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ocsio/Desktop/Year 3 Semester 1/CS4084 - MOBILE APPLICATION DEVELOPMENT/CS4084-foodapp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2703125" />
       </map>
     </option>
   </component>
