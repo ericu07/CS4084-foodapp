@@ -3,14 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Documents/Programmes/Android/CS4084-foodapp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.176171875" />
-        <entry key="..\:/Documents/Programmes/Android/CS4084-foodapp/app/src/main/res/layout/activity_business_settings.xml" value="0.25" />
-        <entry key="..\:/Documents/Programmes/Android/CS4084-foodapp/app/src/main/res/layout/activity_create_offer.xml" value="0.22" />
-        <entry key="..\:/Documents/Programmes/Android/CS4084-foodapp/app/src/main/res/layout/activity_current_offers.xml" value="0.15" />
-        <entry key="..\:/Documents/Programmes/Android/CS4084-foodapp/app/src/main/res/layout/activity_log_in.xml" value="0.1640625" />
-        <entry key="..\:/Documents/Programmes/Android/CS4084-foodapp/app/src/main/res/layout/activity_main.xml" value="0.1421193573068095" />
-        <entry key="..\:/Documents/Programmes/Android/CS4084-foodapp/app/src/main/res/layout/component_offer.xml" value="0.26810109289617484" />
-        <entry key="..\:/Documents/Programmes/Android/CS4084-foodapp/app/src/main/res/layout/offer.xml" value="0.11" />
+        <entry key="..\:/Users/jason/AndroidStudioProjects/CS4084-foodapp/app/src/main/res/layout/activity_business_settings.xml" value="0.31521739130434784" />
       </map>
     </option>
   </component>

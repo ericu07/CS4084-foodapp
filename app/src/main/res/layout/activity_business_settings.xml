@@ -43,7 +43,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="My business" />
+                android:text="My Business"
+                android:textStyle="bold"
+                android:textAlignment="center"/>
 
             <!-- START : BUSINESS INFO -->
             <LinearLayout
@@ -56,19 +58,23 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:background="@drawable/border">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Name" />
+                        android:textStyle="bold"
+                        android:paddingLeft="10"
+                        android:text="Business Name"
+                        android:textSize="12"/>
 
                     <EditText
                         android:id="@+id/editText_businessName"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="textShortMessage" />
+                        android:layout_height="match_parent"
+                        android:ems="500"
+                        android:inputType="textShortMessage"/>
 
                 </LinearLayout>
                 <!-- END : NAME -->
