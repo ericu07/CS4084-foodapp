@@ -6,6 +6,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,13 +16,18 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignUp extends AppCompatActivity {
     Button btn2_signup;
     EditText user_name, pass_word;
     FirebaseAuth mAuth;
     Button btn_sign;
-
+    Spinner userType;
 
 
 
@@ -36,6 +42,7 @@ public class SignUp extends AppCompatActivity {
         btn2_signup=findViewById(R.id.sign);
         mAuth=FirebaseAuth.getInstance();
         btn_sign = findViewById(R.id.LoginBtn);
+        userType = findViewById(R.id.spinner2);
         btn_sign.setOnClickListener(v -> startActivity(new Intent(SignUp.this, LogIn.class )));
         btn2_signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,11 +73,21 @@ public class SignUp extends AppCompatActivity {
                     pass_word.requestFocus();
                     return;
                 }
+
+
                 mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful())
                         {
+                            String userName = user_name.getText().toString();
+                            String typeOfUser = userType.getSelectedItem().toString();
+                            FirebaseFirestore dataBase = FirebaseFirestore.getInstance();
+                            CollectionReference UserType = dataBase.collection("Users");
+                            Map<String, Object > user  = new HashMap<>();
+                            user.put("email", userName);
+                            user.put("type", typeOfUser);
+                            UserType.document(userName).set(user);
                             Toast.makeText(SignUp.this,"You are successfully Registered", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(SignUp.this, MainActivity.class));
                         }
