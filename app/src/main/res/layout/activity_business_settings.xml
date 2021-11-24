@@ -80,6 +80,9 @@
                 <!-- END : NAME -->
 
                 <!-- START : IMAGE -->
+                <!-- END : IMAGE -->
+
+                <!-- START : OPENING TIME -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -112,17 +115,15 @@
                             android:layout_margin="8dp"
                             android:clickable="true"
                             android:focusable="true"
+                            android:onClick="OnClickFabBusinessBanner"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:srcCompat="@android:drawable/ic_menu_gallery"
-                            android:onClick="OnClickFabBusinessBanner" />
+                            app:srcCompat="@android:drawable/ic_menu_gallery" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </LinearLayout>
-                <!-- END : IMAGE -->
 
-                <!-- START : OPENING TIME -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
