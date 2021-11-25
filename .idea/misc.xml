@@ -3,13 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/jason/AndroidStudioProjects/CS4084-foodapp/app/src/main/res/layout/activity_business_settings.xml" value="0.33" />
         <entry key="..\:/Users/ocsio/Desktop/Year 3 Semester 1/CS4084 - MOBILE APPLICATION DEVELOPMENT/CS4084-foodapp/app/src/main/res/layout/activity_business_settings.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ocsio/Desktop/Year 3 Semester 1/CS4084 - MOBILE APPLICATION DEVELOPMENT/CS4084-foodapp/app/src/main/res/layout/activity_create_offer.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ocsio/Desktop/Year 3 Semester 1/CS4084 - MOBILE APPLICATION DEVELOPMENT/CS4084-foodapp/app/src/main/res/layout/activity_current_offers.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ocsio/Desktop/Year 3 Semester 1/CS4084 - MOBILE APPLICATION DEVELOPMENT/CS4084-foodapp/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ocsio/Desktop/Year 3 Semester 1/CS4084 - MOBILE APPLICATION DEVELOPMENT/CS4084-foodapp/app/src/main/res/layout/offer.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/showr/AndroidStudioProjects/CS4084-foodapp/app/src/main/res/drawable/border.xml" value="0.3828125" />
-        <entry key="..\:/Users/showr/AndroidStudioProjects/CS4084-foodapp/app/src/main/res/layout/activity_business_settings.xml" value="0.4266666666666667" />
       </map>
     </option>
   </component>
