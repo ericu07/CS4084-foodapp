@@ -18,6 +18,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 import ie.ul.foodapp.R;
 import ie.ul.foodapp.model.Business;
@@ -45,31 +47,48 @@ public class FirebaseLink {
      * @return current type of user.
      */
     public static UserType getUserType() {
-        if (currentCustomer == null) {
-            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-            String email = currentUser.getEmail();
-            FirebaseFirestore dataBase = FirebaseFirestore.getInstance();
-            DocumentReference docRef = dataBase.collection("Users").document(email);
-            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            System.out.println(document.getString("type"));
+        CompletableFuture<UserType> uType = new CompletableFuture<>();
 
-                        } else {
-                            Log.d(TAG, "Cant get Current User Type ");
+        // retrieve from db
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        String email = currentUser.getEmail();
+        FirebaseFirestore dataBase = FirebaseFirestore.getInstance();
+        DocumentReference docRef = dataBase.collection("Users").document(email);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        //System.out.println(document.getString("type"));
+                        switch (document.getString("type")) {
+                            case "Person": {
+                                uType.complete(UserType.Customer);
+                                break;
+                            }
+                            case "Shop": {
+                                uType.complete(UserType.Business);
+                                break;
+                            }
+                            default: {
+                                uType.complete(UserType.Unknown);
+                                break;
+                            }
                         }
                     } else {
-                        Log.d(TAG, "Getting User Type Failed:", task.getException());
+                        Log.d(TAG, "Cant get Current User Type ");
                     }
+                } else {
+                    Log.d(TAG, "Getting User Type Failed:", task.getException());
                 }
-            });
+            }
+        });
 
+        try {
+            return uType.get();
+        } catch (ExecutionException | InterruptedException e) {
+            return UserType.Unknown;
         }
-        /* TODO retrieve it from database */
-        return UserType.Unknown;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
