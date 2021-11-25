@@ -59,7 +59,7 @@ public class FirebaseLink {
                             System.out.println(document.getString("type"));
 
                         } else {
-                            Log.d(TAG, "Cant get Current User");
+                            Log.d(TAG, "Cant get Current User Type ");
                         }
                     } else {
                         Log.d(TAG, "Getting User Type Failed:", task.getException());
