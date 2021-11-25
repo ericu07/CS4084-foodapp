@@ -45,7 +45,29 @@ public class FirebaseLink {
      * @return current type of user.
      */
     public static UserType getUserType() {
+        if (currentCustomer == null) {
+            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+            String email = currentUser.getEmail();
+            FirebaseFirestore dataBase = FirebaseFirestore.getInstance();
+            DocumentReference docRef = dataBase.collection("Users").document(email);
+            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            System.out.println(document.getString("type"));
 
+                        } else {
+                            Log.d(TAG, "Cant get Current User");
+                        }
+                    } else {
+                        Log.d(TAG, "Getting User Type Failed:", task.getException());
+                    }
+                }
+            });
+
+        }
         /* TODO retrieve it from database */
         return UserType.Unknown;
     }
@@ -124,30 +146,7 @@ public class FirebaseLink {
      * @return current customer or null.
      */
     public static Object getCurrenCustomer() {
-        if (currentCustomer == null) {
-            String UserCurrent;
-            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-            String email = currentUser.getEmail();
-            FirebaseFirestore dataBase = FirebaseFirestore.getInstance();
-            DocumentReference docRef = dataBase.collection("Users").document(email);
-            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            System.out.println(document.getString("email"));
 
-                        } else {
-                            Log.d(TAG, "Cant get Current User");
-                        }
-                    } else {
-                        Log.d(TAG, "Getting User Type Failed:", task.getException());
-                    }
-                }
-            });
-            /* TODO retrieve from database */
-        }
 
         return currentCustomer;
     }
