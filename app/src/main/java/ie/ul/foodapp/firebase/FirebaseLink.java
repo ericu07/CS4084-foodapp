@@ -1,6 +1,19 @@
 package ie.ul.foodapp.firebase;
 
+import static android.content.ContentValues.TAG;
+
 import android.graphics.BitmapFactory;
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.time.LocalTime;
 import java.util.LinkedList;
@@ -13,6 +26,8 @@ import ie.ul.foodapp.utils.App;
 
 public class FirebaseLink {
 
+
+  public static FirebaseAuth mAuth;
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //                                                                                            //
     //    USER                                                                                    //
@@ -30,6 +45,7 @@ public class FirebaseLink {
      * @return current type of user.
      */
     public static UserType getUserType() {
+
         /* TODO retrieve it from database */
         return UserType.Unknown;
     }
@@ -109,6 +125,27 @@ public class FirebaseLink {
      */
     public static Object getCurrenCustomer() {
         if (currentCustomer == null) {
+            String UserCurrent;
+            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+            String email = currentUser.getEmail();
+            FirebaseFirestore dataBase = FirebaseFirestore.getInstance();
+            DocumentReference docRef = dataBase.collection("Users").document(email);
+            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            System.out.println(document.getString("email"));
+
+                        } else {
+                            Log.d(TAG, "Cant get Current User");
+                        }
+                    } else {
+                        Log.d(TAG, "Getting User Type Failed:", task.getException());
+                    }
+                }
+            });
             /* TODO retrieve from database */
         }
 
