@@ -166,8 +166,35 @@ public class FirebaseLink {
      */
     public static Object getCurrenCustomer() {
 
+        if(getUserType() == UserType.Customer) {
+            // gets all data from currently signed in customer
+            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+            String email = currentUser.getEmail();
+            FirebaseFirestore dataBase = FirebaseFirestore.getInstance();
+            DocumentReference docRef = dataBase.collection("Users").document(email);
+            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                           currentCustomer =  document.getData();
+                        } else {
+                            Log.d(TAG, "Cant get User Data ");
+                        }
+                    } else {
+                        Log.d(TAG, "Getting User Data Failed:", task.getException());
+                    }
+                }
+            });
+        }
+        else {
+
+            return null;
+        }
 
         return currentCustomer;
+
     }
 
     /**
