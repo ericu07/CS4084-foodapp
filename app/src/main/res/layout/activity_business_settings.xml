@@ -30,22 +30,28 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#D3D3D3">
 
         <!-- START : CONTENT -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="96dp">
+            android:paddingBottom="75dp">
 
             <!-- TITLE -->
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="My business" />
+                android:layout_height="30dp"
+                android:background="#9966CC"
+                android:text="My Business"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
             <!-- START : BUSINESS INFO -->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -55,38 +61,44 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/border">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Name" />
+                        android:text="Name"
+                        android:paddingLeft="5dp"
+                        android:textSize="12dp"
+                        android:textStyle="bold"
+                        android:background="@drawable/border"/>
 
                     <EditText
                         android:id="@+id/editText_businessName"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="textShortMessage" />
+                        android:layout_height="30dp"
+                        android:ems="500"
+                        android:background="#CCFFFF"
+                        android:hint="Enter Business Name Here"
+                        android:textSize="12dp"
+                        android:paddingLeft="5dp"
+                        android:layout_marginRight="2dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginBottom="2dp"
+                        android:inputType="textShortMessage"/>
 
                 </LinearLayout>
                 <!-- END : NAME -->
 
                 <!-- START : IMAGE -->
-                <!-- END : IMAGE -->
-
-                <!-- START : OPENING TIME -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_margin="2dp"
+                    >
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Banner" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -95,11 +107,11 @@
                         <ImageView
                             android:id="@+id/imageView_businessBanner"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:adjustViewBounds="true"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            tools:srcCompat="@drawable/default_business_banner" />
+                            tools:srcCompat="@drawable/food_banner"/>
 
                         <com.google.android.material.floatingactionbutton.FloatingActionButton
                             android:id="@+id/fab_businessBanner"
@@ -112,63 +124,74 @@
                             android:onClick="OnClickFabBusinessBanner"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:srcCompat="@android:drawable/ic_menu_gallery" />
+                            app:srcCompat="@android:drawable/ic_menu_gallery"
+                            app:backgroundTint="#000000"
+                            android:backgroundTint="#9966CC"/>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </LinearLayout>
-
+                <!-- END : IMAGE -->
+                <!-- START : OPENING HOURS -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:background="@drawable/border"
+                    android:layout_margin="2dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Opening time" />
+                        android:text="Opening Hours"
+                        android:paddingLeft="2dp"
+                        android:textStyle="bold"
+                        android:background="@drawable/border"
+                        android:layout_marginBottom="0dp"/>
 
                     <!-- START : DAYS -->
                     <com.google.android.material.tabs.TabLayout
                         android:id="@+id/tabLayout_daysOfTheWeek"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" >
-
-                            <com.google.android.material.tabs.TabItem
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Mon" />
+                        android:layout_height="match_parent"
+                        android:backgroundTint="#CCFFFF"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp">
 
                         <com.google.android.material.tabs.TabItem
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Tue" />
+                            android:text="M"/>
 
                         <com.google.android.material.tabs.TabItem
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Wed" />
+                            android:text="T" />
 
                         <com.google.android.material.tabs.TabItem
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Thu" />
+                            android:text="W" />
 
                         <com.google.android.material.tabs.TabItem
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Fri" />
+                            android:text="Th" />
 
                         <com.google.android.material.tabs.TabItem
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Sat" />
+                            android:text="F" />
 
                         <com.google.android.material.tabs.TabItem
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Sun" />
+                            android:text="Sa" />
+
+                        <com.google.android.material.tabs.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Su" />
 
                     </com.google.android.material.tabs.TabLayout>
                     <!-- END : DAYS -->
@@ -177,24 +200,34 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:background="@drawable/border"
+                        android:layout_marginTop="0dp">
 
                         <!-- START : OPEN THIS DAY -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:background="@drawable/border"
+                            android:layout_margin="2dp">
 
                             <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
+                                android:layout_width="380dp"
+                                android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:text="Open this day" />
+                                android:background="#FFCCFF"
+                                android:paddingLeft="2dp"
+                                android:text="Open this day"
+                                android:textAlignment="textStart"
+                                android:gravity="center"
+                                android:textStyle="bold" />
 
                             <Switch
                                 android:id="@+id/switch_openThisDay"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="wrap_content"
+                                android:background="#FFCCFF"/>
                         </LinearLayout>
                         <!-- END : OPEN THIS DAY -->
 
@@ -209,20 +242,28 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:orientation="horizontal">
+                                android:orientation="horizontal"
+                                android:background="@drawable/border"
+                                android:layout_margin="2dp">
 
                                 <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="From" />
+                                    android:layout_width="35dp"
+                                    android:layout_height="match_parent"
+                                    android:background="#FFCCFF"
+                                    android:text="From"
+                                    android:textStyle="bold"
+                                    android:gravity="center"/>
 
                                 <EditText
                                     android:id="@+id/editTextTime_fromTime"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
+                                    android:layout_height="35dp"
                                     android:layout_weight="1"
+                                    android:background="#CCFFFF"
                                     android:ems="10"
-                                    android:inputType="time" />
+                                    android:hint="Enter Opening Time Here"
+                                    android:inputType="time"
+                                    android:textSize="12dp"
+                                    android:paddingLeft="10dp"/>
                             </LinearLayout>
                             <!-- END : FROM -->
 
@@ -230,20 +271,28 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:orientation="horizontal">
+                                android:orientation="horizontal"
+                                android:background="@drawable/border"
+                                android:layout_margin="2dp">
 
                                 <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="To" />
+                                    android:layout_width="35dp"
+                                    android:layout_height="match_parent"
+                                    android:background="#FFCCFF"
+                                    android:gravity="center"
+                                    android:text="To"
+                                    android:textStyle="bold" />
 
                                 <EditText
                                     android:id="@+id/editTextTime_toTime"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
+                                    android:layout_height="35dp"
                                     android:layout_weight="1"
+                                    android:background="#CCFFFF"
                                     android:ems="10"
-                                    android:inputType="time" />
+                                    android:hint="Enter Closing Time Here"
+                                    android:inputType="time"
+                                    android:textSize="12dp"
+                                    android:paddingLeft="10dp"/>
                             </LinearLayout>
                             <!-- END : TO -->
                         </LinearLayout>
@@ -259,18 +308,23 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:orientation="vertical">
+                    android:layout_margin="2dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/border">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Business location" />
+                        android:text="Select Business Location"
+                        android:paddingLeft="2dp"
+                        android:textStyle="bold"
+                        />
 
                     <com.google.android.gms.maps.MapView
                         android:id="@+id/mapView"
                         android:layout_width="match_parent"
-                        android:layout_height="300dp" />
+                        android:layout_height="300dp"
+                        android:layout_margin="2dp" />
                 </LinearLayout>
                 <!-- END : LOCATION -->
 
