@@ -17,7 +17,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
         public void onClickGetData (View view) {
-            FirebaseLink.getCurrenCustomer();
+        FirebaseLink.getCurrenCustomer();
+
         }
     }
 

@@ -23,6 +23,7 @@ import java.util.concurrent.ExecutionException;
 
 import ie.ul.foodapp.R;
 import ie.ul.foodapp.model.Business;
+import ie.ul.foodapp.model.Customer;
 import ie.ul.foodapp.model.Offer;
 import ie.ul.foodapp.utils.App;
 
@@ -167,6 +168,9 @@ public class FirebaseLink {
     public static Object getCurrenCustomer() {
 
         if(getUserType() == UserType.Customer) {
+            //Creates Customer
+            Customer currentCustomer = new Customer();
+
             // gets all data from currently signed in customer
             FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
             String email = currentUser.getEmail();
@@ -178,7 +182,7 @@ public class FirebaseLink {
                     if (task.isSuccessful()) {
                         DocumentSnapshot document = task.getResult();
                         if (document.exists()) {
-                           currentCustomer =  document.getData();
+                            currentCustomer.setEmail(document.getString("email"));
                         } else {
                             Log.d(TAG, "Cant get User Data ");
                         }
@@ -192,8 +196,8 @@ public class FirebaseLink {
 
             return null;
         }
-
         return currentCustomer;
+
 
     }
 
