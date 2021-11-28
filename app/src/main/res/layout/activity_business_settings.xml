@@ -15,7 +15,10 @@
         android:clickable="true"
         android:focusable="true"
         app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
-        android:onClick="OnClickFabCancel" />
+        android:onClick="OnClickFabCancel"
+        app:backgroundTint="#000000"
+        android:backgroundTint="#9966CC"
+        />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_save"
@@ -26,7 +29,9 @@
         android:clickable="true"
         android:focusable="true"
         app:srcCompat="@android:drawable/ic_menu_save"
-        android:onClick="OnClickFabSave" />
+        android:onClick="OnClickFabSave"
+        app:backgroundTint="#000000"
+        android:backgroundTint="#9966CC"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -111,7 +116,7 @@
                             android:adjustViewBounds="true"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            tools:srcCompat="@drawable/food_banner"/>
+                            tools:srcCompat="@drawable/food_banner" />
 
                         <com.google.android.material.floatingactionbutton.FloatingActionButton
                             android:id="@+id/fab_businessBanner"
