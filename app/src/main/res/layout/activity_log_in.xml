@@ -17,22 +17,23 @@
         android:adjustViewBounds="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo"
         tools:srcCompat="@drawable/logo" />
+
     <TextView
         android:id="@+id/ForwardFood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Forward Food"
-        android:textSize="35dp"
         android:fontFamily="serif"
-        android:textStyle="bold||italic"
-        android:textColor="#CCFFFF"
         android:shadowColor="#000000"
         android:shadowDx="5"
         android:shadowDy="5"
         android:shadowRadius="5"
+        android:text="Forward Food"
+        android:textColor="#CCFFFF"
+        android:textSize="35dp"
 
-        />
+        android:textStyle="bold|italic" />
 
     <EditText
         android:id="@+id/email"
