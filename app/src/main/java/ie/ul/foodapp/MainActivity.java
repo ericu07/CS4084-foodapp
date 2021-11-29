@@ -1,11 +1,8 @@
 package ie.ul.foodapp;
 
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import ie.ul.foodapp.firebase.FirebaseLink;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,9 +13,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-        public void onClickGetData (View view) {
-        FirebaseLink.getCurrenCustomer();
 
-        }
     }
 

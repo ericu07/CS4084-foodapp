@@ -12,7 +12,7 @@ public class Offer {
 
     protected Business business;
     protected Object booker;
-
+    protected int ID;
     protected String name;
     protected String description;
     protected LocalTime pickup;
@@ -28,7 +28,7 @@ public class Offer {
     public Offer(Offer o) {
         this.business = o.business;
         this.booker = o.booker;
-
+        this.ID = o.ID;
         this.name = o.name;
         this.description = o.description;
         this.pickup = o.pickup;
@@ -51,6 +51,8 @@ public class Offer {
     public void setBusiness(Business business) {
         this.business = business;
     }
+
+    public int getOfferID() {return business.ID;}
 
     public Object getBooker() {
         return booker;

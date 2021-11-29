@@ -29,6 +29,7 @@ public class Offer extends LinearLayout implements ViewTreeObserver.OnGlobalFocu
     Button book;
     Button cancelBooking;
 
+
     /* attributes */
 
     ie.ul.foodapp.model.Offer offer;

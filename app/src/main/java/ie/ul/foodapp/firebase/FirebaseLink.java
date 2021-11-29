@@ -190,23 +190,23 @@ public class FirebaseLink {
     //                                                                                            //
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    protected static Object currentCustomer;
+
 
     /**
      * Used to retrieve the current customer (only works when logged as a regular user, returns null otherwise).
      * @return current customer or null.
      */
-    public static Object getCurrenCustomer() {
-
+    public static Customer getCurrenCustomer() {
+        Customer currentCustomer = new Customer();
         if(getUserType() == UserType.Customer) {
             //Creates Customer
-            Customer currentCustomer = new Customer();
+
 
             // gets all data from currently signed in customer
             FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
             String email = currentUser.getEmail();
             FirebaseFirestore dataBase = FirebaseFirestore.getInstance();
-            DocumentReference docRef = dataBase.collection("Users").document(email);
+            DocumentReference docRef = dataBase.collection("User").document(email);
             docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -214,6 +214,8 @@ public class FirebaseLink {
                         DocumentSnapshot document = task.getResult();
                         if (document.exists()) {
                             currentCustomer.setEmail(document.getString("email"));
+                            currentCustomer.SetID((Integer) document.get("ID"));
+                            currentCustomer.setOrders((List<Offer>) document.get("orders"));
                         } else {
                             Log.d(TAG, "Cant get User Data ");
                         }

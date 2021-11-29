@@ -31,15 +31,24 @@ public class Customer {
     }
 
     public String getEmail() { return Email; }
+
     public int getID() {return  ID;}
+
+    public void SetID(int id){this.ID = id;};
+
 
     public void setEmail(String email) {
         this.Email = email;
+    }
+
+    public void setOrders(List<Offer> orders){
+        this.Orders = orders;
     }
 
     public void addOrder(Offer order) { Orders.add(order); }
 
     public List<Offer> getOrders() { return Orders; }
 
+   
 
 }

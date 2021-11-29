@@ -59,6 +59,7 @@ public class LogIn extends AppCompatActivity {
                 if(task.isSuccessful())
                 {
                     startActivity(new Intent(LogIn.this, MainActivity.class));
+
                 }
                 else
                 {
