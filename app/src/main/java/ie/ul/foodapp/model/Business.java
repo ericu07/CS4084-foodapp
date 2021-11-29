@@ -14,8 +14,11 @@ public class Business {
 
     protected String name;
     protected Bitmap banner;
+    private int max = 1000000000;
+    private int min = 1 ;
     protected TimeSpan[] openingHours;
     protected Object localisation;
+    protected int ID;
 
     protected List<Offer> previousOffers;
     protected List<Offer> currentOffers;
@@ -23,6 +26,7 @@ public class Business {
     public Business() {
         name = "My business";
         banner = null;
+        ID = (int)Math.floor(Math.random()*(max-min+1)+min);
         openingHours = new TimeSpan[7];
         Arrays.fill(openingHours, null);
         localisation = null;
@@ -32,6 +36,7 @@ public class Business {
     public Business(Business b) {
         this.name = b.name;
         this.banner = b.banner;
+        this.ID = b.ID ;
         this.openingHours = new TimeSpan[7];
         System.arraycopy(b.openingHours, 0, this.openingHours, 0, this.openingHours.length);
         this.localisation = b.localisation;
@@ -49,6 +54,8 @@ public class Business {
     public String getName() {
         return name;
     }
+
+    public int getID() {return ID;}
 
     public void setName(String name) {
         this.name = name;

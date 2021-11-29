@@ -66,8 +66,7 @@
         android:layout_marginLeft="10pt"
         android:layout_marginRight="10pt"
         android:backgroundTint="#000000"
-        android:entries="@array/spinnerItems"
-        />
+        android:entries="@array/spinnerItems" />
 
     <Button
         android:id="@+id/sign"

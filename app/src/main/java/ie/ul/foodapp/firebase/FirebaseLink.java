@@ -54,8 +54,9 @@ public class FirebaseLink {
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         String email = currentUser.getEmail();
         FirebaseFirestore dataBase = FirebaseFirestore.getInstance();
-        DocumentReference docRef = dataBase.collection("Users").document(email);
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        DocumentReference docRefUser = dataBase.collection("User").document(email);
+        DocumentReference docRefBusiness = dataBase.collection("Business").document(email);
+        docRefUser.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
@@ -63,11 +64,41 @@ public class FirebaseLink {
                     if (document.exists()) {
                         //System.out.println(document.getString("type"));
                         switch (document.getString("type")) {
-                            case "Person": {
+                            case "User": {
                                 uType.complete(UserType.Customer);
                                 break;
                             }
-                            case "Shop": {
+                            case "Business": {
+                                uType.complete(UserType.Business);
+                                break;
+                            }
+                            default: {
+                                uType.complete(UserType.Unknown);
+                                break;
+                            }
+                        }
+                    } else {
+                        Log.d(TAG, "Cant get Current User Type ");
+                    }
+                } else {
+                    Log.d(TAG, "Getting User Type Failed:", task.getException());
+                }
+            }
+        });
+
+        docRefUser.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        //System.out.println(document.getString("type"));
+                        switch (document.getString("type")) {
+                            case "User": {
+                                uType.complete(UserType.Customer);
+                                break;
+                            }
+                            case "Business": {
                                 uType.complete(UserType.Business);
                                 break;
                             }

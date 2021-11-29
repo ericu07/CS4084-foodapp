@@ -22,6 +22,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
+import ie.ul.foodapp.model.Business;
+import ie.ul.foodapp.model.Customer;
+
 public class SignUp extends AppCompatActivity {
     Button btn2_signup;
     EditText user_name, pass_word;
@@ -83,11 +86,35 @@ public class SignUp extends AppCompatActivity {
                             String userName = user_name.getText().toString();
                             String typeOfUser = userType.getSelectedItem().toString();
                             FirebaseFirestore dataBase = FirebaseFirestore.getInstance();
-                            CollectionReference UserType = dataBase.collection("Users");
-                            Map<String, Object > user  = new HashMap<>();
-                            user.put("email", userName);
-                            user.put("type", typeOfUser);
-                            UserType.document(userName).set(user);
+                            CollectionReference UserType = dataBase.collection(typeOfUser);
+
+                            if( typeOfUser.equals("User")){
+                                Customer thisCustomer = new Customer();
+                                Map<String, Object> user = new HashMap<>();
+                                user.put("ID", thisCustomer.getID());
+                                user.put("email", userName);
+                                user.put("orders", thisCustomer.getOrders());
+                                user.put("type", typeOfUser);
+                                UserType.document(userName).set(user);
+                            }
+                            else {
+                                Business thisBusiness = new Business();
+                                Map<String, Object > business = new HashMap<>();
+                                business.put("email", userName);
+                                business.put("ID", thisBusiness.getID());
+                                business.put("type", typeOfUser);
+                                business.put("name", thisBusiness.getName());
+                                business.put("opening hours monday", thisBusiness.getOpeningHours(1));
+                                business.put("opening hours tuesday", thisBusiness.getOpeningHours(2));
+                                business.put("opening hours wednesday", thisBusiness.getOpeningHours(3));
+                                business.put("opening hours thursday", thisBusiness.getOpeningHours(4));
+                                business.put("opening hours friday", thisBusiness.getOpeningHours(5));
+                                business.put("opening hours saturday", thisBusiness.getOpeningHours(6));
+                                business.put("opening hours sunday", thisBusiness.getOpeningHours(7));
+                                business.put("offers", thisBusiness.getOffers());
+                                UserType.document(userName).set(business);
+
+                            }
                             Toast.makeText(SignUp.this,"You are successfully Registered", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(SignUp.this, MainActivity.class));
                         }
