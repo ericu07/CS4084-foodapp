@@ -8,29 +8,27 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
-public class Home extends AppCompatActivity {
+public class Bookings extends AppCompatActivity {
     Adapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_bookings);
 
-        ArrayList<String> items = getArrayList();
+        ArrayList<String> bookedItems = getBookedItems();
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new Adapter(this, items);
+        adapter = new Adapter(this, bookedItems);
         recyclerView.setAdapter(adapter);
-
     }
 
-    private ArrayList<String> getArrayList(){
+    private ArrayList<String> getBookedItems(){
         ArrayList<String> items = new ArrayList<>();
-        items.add("First Restaurant");
-        items.add("Second Restaurant");
-        items.add("Third Restaurant");
-        items.add("Fourth Restaurant");
-        items.add("Fifth Restaurant");
+        items.add("First Booking");
+        items.add("Second Booking");
+        items.add("Third Booking");
+        items.add("Fourth Booking");
         return items;
     }
 }

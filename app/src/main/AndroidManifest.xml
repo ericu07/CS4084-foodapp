@@ -10,10 +10,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CS4084foodapp">
+        <activity
+            android:name=".Bookings"
+            android:exported="false" />
         <activity android:name=".Details">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Home"/>
+                android:value=".Home" />
         </activity>
         <activity android:name=".Home" />
         <activity
