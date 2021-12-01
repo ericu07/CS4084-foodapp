@@ -1,6 +1,7 @@
 package ie.ul.foodapp.model;
 
 import android.graphics.Bitmap;
+import android.location.Address;
 
 import androidx.annotation.NonNull;
 
@@ -19,6 +20,7 @@ public class Business {
     protected TimeSpan[] openingHours;
     protected Object localisation;
     protected int ID;
+    protected android.location.Address address;
 
     protected List<Offer> previousOffers;
     protected List<Offer> currentOffers;
@@ -30,6 +32,7 @@ public class Business {
         openingHours = new TimeSpan[7];
         Arrays.fill(openingHours, null);
         localisation = null;
+        address = null;
         previousOffers = new LinkedList<>();
         currentOffers = new LinkedList<>();
     }
@@ -38,6 +41,7 @@ public class Business {
         this.banner = b.banner;
         this.ID = b.ID ;
         this.openingHours = new TimeSpan[7];
+        this.address = b.address;
         System.arraycopy(b.openingHours, 0, this.openingHours, 0, this.openingHours.length);
         this.localisation = b.localisation;
         this.previousOffers = new LinkedList<>();
@@ -61,6 +65,13 @@ public class Business {
     //used for database
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+    public void SetAddress(android.location.Address a) {
+        this.address = a;
     }
 
     public Bitmap getBanner() {
@@ -113,5 +124,6 @@ public class Business {
             previousOffers.add(offer);
         }
     }
+
 
 }
