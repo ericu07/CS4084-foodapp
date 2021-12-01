@@ -33,14 +33,14 @@ public class Customer {
     public String getEmail() { return Email; }
 
     public int getID() {return  ID;}
+    //used for database
+    public void setID(int id){this.ID = id;};
 
-    public void SetID(int id){this.ID = id;};
-
-
+    //used for database
     public void setEmail(String email) {
         this.Email = email;
     }
-
+    //used for database
     public void setOrders(List<Offer> orders){
         this.Orders = orders;
     }
@@ -49,6 +49,6 @@ public class Customer {
 
     public List<Offer> getOrders() { return Orders; }
 
-   
+
 
 }

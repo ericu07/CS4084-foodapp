@@ -54,9 +54,11 @@ public class Business {
     public String getName() {
         return name;
     }
-
+    //used for database
+    public void setID(int id){ this.ID = id; }
+    //used for database
     public int getID() {return ID;}
-
+    //used for database
     public void setName(String name) {
         this.name = name;
     }
@@ -77,6 +79,8 @@ public class Business {
         }
     }
 
+
+
     public void setOpeningHours(TimeSpan openingHours, int day) {
         if (!(day < 0 || day >= 7)) {
             this.openingHours[day] = openingHours;
@@ -89,6 +93,11 @@ public class Business {
 
     public void setLocalisation(Object localisation) {
         this.localisation = localisation;
+    }
+
+    //used for database
+    public void setOffers(List<Offer> currentOffers) {
+        this.currentOffers = currentOffers;
     }
 
     public void addOffer(Offer offer) {
