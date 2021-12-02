@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="ie.ul.foodapp">
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -38,6 +39,15 @@
             android:name=".MapsActivity"
             android:exported="true"
             android:label="@string/title_activity_maps" />
+        <activity
+            android:name=".Bookings"
+            android:exported="false" />
+        <activity android:name=".Details">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Home" />
+        </activity>
+        <activity android:name=".Home" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />

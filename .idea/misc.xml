@@ -3,6 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+
+        <entry key="..\:/Users/dave/StudioProjects/CS4084-foodapp/app/src/main/res/layout/activity_bookings.xml" value="0.1621376811594203" />
+        <entry key="..\:/Users/dave/StudioProjects/CS4084-foodapp/app/src/main/res/layout/activity_details.xml" value="0.22" />
+        <entry key="..\:/Users/dave/StudioProjects/CS4084-foodapp/app/src/main/res/layout/activity_home.xml" value="0.1" />
+        <entry key="..\:/Users/dave/StudioProjects/CS4084-foodapp/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/dave/StudioProjects/CS4084-foodapp/app/src/main/res/layout/activity_test.xml" value="0.1" />
+        <entry key="..\:/Users/dave/StudioProjects/CS4084-foodapp/app/src/main/res/layout/custom_card.xml" value="0.16666666666666666" />
+
         <entry key="..\:/Users/jason/AndroidStudioProjects/CS4084-foodapp/app/src/main/res/layout/activity_business_settings.xml" value="0.33" />
         <entry key="..\:/Users/jason/AndroidStudioProjects/CS4084-foodapp/app/src/main/res/layout/activity_create_offer.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/jason/AndroidStudioProjects/CS4084-foodapp/app/src/main/res/layout/activity_current_offers.xml" value="0.5541666666666667" />
