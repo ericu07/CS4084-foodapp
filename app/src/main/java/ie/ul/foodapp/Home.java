@@ -25,6 +25,7 @@ public class Home extends AppCompatActivity {
     }
 
     private ArrayList<String> getArrayList(){
+        //List<Offer> offer = get name of all offers from each business
         ArrayList<String> items = new ArrayList<>();
         items.add("First Restaurant");
         items.add("Second Restaurant");
