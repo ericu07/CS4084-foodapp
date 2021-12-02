@@ -33,7 +33,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="${MAPS_API_KEY}" />
+            android:value="AlzaSyCsJBs688eNNU6LAKwrCIXRh2bFm5yihs" />
 
         <activity
             android:name=".MapsActivity"
@@ -49,8 +49,7 @@
         </activity>
         <activity android:name=".Home" />
         <activity
-            android:name=".MainActivity"
-            android:exported="true" />
+            android:name=".MainActivity" />
         <activity
             android:name=".SignUp"
             android:exported="true">

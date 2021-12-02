@@ -58,7 +58,8 @@ public class LogIn extends AppCompatActivity {
             mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(task -> {
                 if(task.isSuccessful())
                 {
-                    startActivity(new Intent(LogIn.this, MainActivity.class));
+                    //to do: add conditional statement to display .Home to customers and other screen to business
+                    startActivity(new Intent(LogIn.this, Home.class));
 
                 }
                 else

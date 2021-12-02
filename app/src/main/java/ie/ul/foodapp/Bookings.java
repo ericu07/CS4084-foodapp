@@ -17,9 +17,10 @@ public class Bookings extends AppCompatActivity {
         setContentView(R.layout.activity_bookings);
 
         ArrayList<String> bookedItems = getBookedItems();
+        ArrayList<String> offers = new ArrayList<>();
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new Adapter(this, bookedItems);
+        adapter = new Adapter(this, bookedItems, offers);
         recyclerView.setAdapter(adapter);
     }
 
@@ -30,5 +31,14 @@ public class Bookings extends AppCompatActivity {
         items.add("Third Booking");
         items.add("Fourth Booking");
         return items;
+    }
+
+    private ArrayList<String> getDesc(){
+        ArrayList<String> desc = new ArrayList<>();
+        desc.add("First Booking Desc");
+        desc.add("Second Booking Desc");
+        desc.add("Third Booking Desc");
+        desc.add("Fourth Booking Desc");
+        return desc;
     }
 }
