@@ -92,7 +92,7 @@ public class CurrentOffers extends AppCompatActivity {
                                     o.setPickup(pickUpTimeAsLT);
                                 }
                                 o.setPrice(Double.parseDouble(document.get("Price").toString()));
-                                o.setOfferImage(BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher_background));
+                                o.setOfferImage(BitmapFactory.decodeResource(getResources(), R.drawable.food_banner));
 
                                 offers.add(o);
                             }
