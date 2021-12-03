@@ -120,7 +120,7 @@ public class Offer {
 
     public void setOfferImage(Bitmap offerImage) {
         this.offerImage = offerImage;
-        this.croppedImage = BitmapUtils.cropToAspectRatio(offerImage, 2.5f, 1f);
+        this.croppedImage = BitmapUtils.cropToAspectRatio(offerImage, 3.5f, 1f);
     }
 
     public Bitmap getCroppedImage() {
