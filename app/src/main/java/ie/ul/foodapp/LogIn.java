@@ -62,11 +62,11 @@ public class LogIn extends AppCompatActivity {
                 pass_word.requestFocus();
                 return;
             }
+
             mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     getType();
                     if( returnType() != null && returnType().equals("Business")) {
-
                         startActivity(new Intent(LogIn.this, BusinessPageUI.class));
                     }
                     else if(returnType() != null && returnType().equals("User")) {

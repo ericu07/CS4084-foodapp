@@ -17,10 +17,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
 
     private LayoutInflater layoutInflater;
     private ArrayList<String> data;
+    private ArrayList<String> desc;
 
-    public Adapter(Context context, ArrayList<String> data){
+    public Adapter(Context context, ArrayList<String> data, ArrayList<String> desc){
         this.layoutInflater = LayoutInflater.from(context);
         this.data = data;
+        this.desc = desc;
     }
     @NonNull
     @Override
@@ -33,7 +35,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
 
         String title = data.get(i);
+        String offer = desc.get(i);
         viewHolder.textTitle.setText(title);
+        viewHolder.textDescription.setText(offer);
     }
 
     @Override
@@ -55,7 +59,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
 
                     Intent intent = new Intent(v.getContext(), Details.class);
                     intent.putExtra("title", data.get(getAdapterPosition()));
-                    //intent.putExtra("description", data.get(getAdapterPosition()));
+                    intent.putExtra("description", desc.get(getAdapterPosition()));
                     v.getContext().startActivity(intent);
 
                 }
