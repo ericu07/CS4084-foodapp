@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -113,6 +114,7 @@ String curr;
         offer.put("pickup time", pickup.getText().toString());
         Offer.document(String.valueOf(thisID)).set(offer);
         System.out.println(curr);
+        Toast.makeText(CreateOffer.this,"You Have Successfully Created an Offer", Toast.LENGTH_SHORT).show();
     }
 
 
