@@ -111,10 +111,10 @@ public class BusinessSettings extends AppCompatActivity implements TabLayout.OnT
 
         /* UI parts */
 
-        name = findViewById(R.id.editText_PickUpTime);
+        name = findViewById(R.id.Name);
         name.addTextChangedListener(this);
 
-        banner = findViewById(R.id.imageView_businessBanner);
+      //  banner = findViewById(R.id.buss_name);
 
         daysOfTheWeek = findViewById(R.id.tabLayout_daysOfTheWeek);
         daysOfTheWeek.addOnTabSelectedListener(this);
@@ -250,23 +250,23 @@ public class BusinessSettings extends AppCompatActivity implements TabLayout.OnT
 
     /* listeners */
 
-    public void OnClickFabCancel (View view) {
+ /*   public void OnClickFabCancel (View view) {
         load(business);
-    }
+    }*/
 
-    public void OnClickFabSave (View view) {
+ /*   public void OnClickFabSave (View view) {
         pendingChanges.setName(name.getText().toString());
         selectTab(daysOfTheWeek.getTabAt(daysOfTheWeek.getSelectedTabPosition()));
-        /* TODO save it to database */
+
         load(pendingChanges);
     }
-
-    public void OnClickFabBusinessBanner (View view) {
+*/
+   /* public void OnClickFabBusinessBanner (View view) {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select a business banner"), INTENT_CODE_PICK_IMAGE);
-    }
+    }*/
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

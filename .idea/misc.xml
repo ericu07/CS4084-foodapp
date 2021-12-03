@@ -3,10 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ocsio/Desktop/Year 3 Semester 1/CS4084 - MOBILE APPLICATION DEVELOPMENT/CS4084-foodapp/app/src/main/res/layout/activity_bookings.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ocsio/Desktop/Year 3 Semester 1/CS4084 - MOBILE APPLICATION DEVELOPMENT/CS4084-foodapp/app/src/main/res/layout/activity_business_settings.xml" value="0.264" />
         <entry key="..\:/Users/ocsio/Desktop/Year 3 Semester 1/CS4084 - MOBILE APPLICATION DEVELOPMENT/CS4084-foodapp/app/src/main/res/layout/activity_create_offer.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ocsio/Desktop/Year 3 Semester 1/CS4084 - MOBILE APPLICATION DEVELOPMENT/CS4084-foodapp/app/src/main/res/layout/activity_current_offers.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ocsio/Desktop/Year 3 Semester 1/CS4084 - MOBILE APPLICATION DEVELOPMENT/CS4084-foodapp/app/src/main/res/layout/activity_details.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ocsio/Desktop/Year 3 Semester 1/CS4084 - MOBILE APPLICATION DEVELOPMENT/CS4084-foodapp/app/src/main/res/layout/activity_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ocsio/Desktop/Year 3 Semester 1/CS4084 - MOBILE APPLICATION DEVELOPMENT/CS4084-foodapp/app/src/main/res/layout/activity_log_in.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ocsio/Desktop/Year 3 Semester 1/CS4084 - MOBILE APPLICATION DEVELOPMENT/CS4084-foodapp/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ocsio/Desktop/Year 3 Semester 1/CS4084 - MOBILE APPLICATION DEVELOPMENT/CS4084-foodapp/app/src/main/res/layout/activity_sign_up.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ocsio/Desktop/Year 3 Semester 1/CS4084 - MOBILE APPLICATION DEVELOPMENT/CS4084-foodapp/app/src/main/res/layout/custom_card.xml" value="0.176" />
         <entry key="..\:/Users/ocsio/Desktop/Year 3 Semester 1/CS4084 - MOBILE APPLICATION DEVELOPMENT/CS4084-foodapp/app/src/main/res/layout/maps_activity.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ocsio/Desktop/Year 3 Semester 1/CS4084 - MOBILE APPLICATION DEVELOPMENT/CS4084-foodapp/app/src/main/res/layout/offer.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

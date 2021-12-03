@@ -2,9 +2,11 @@ package ie.ul.foodapp.activities.business;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -24,6 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import ie.ul.foodapp.BusinessPageUI;
 import ie.ul.foodapp.R;
 import ie.ul.foodapp.model.Offer;
 
@@ -35,6 +38,7 @@ EditText pickup;
 ImageView image;
 Object BusinessID;
 String curr;
+Button cancel;
 
 
     @Override
@@ -44,9 +48,11 @@ String curr;
         name = findViewById(R.id.editText_offerName);
         desc = findViewById(R.id.editText_description);
         price = findViewById(R.id.editText_price);
-        pickup = findViewById(R.id.editText_PickUpTime);
+        pickup = findViewById(R.id.Name);
         image  = findViewById(R.id.imageView_offerImage);
+        Button btn1 = (Button) findViewById(R.id.CancelButton);
 
+        btn1.setOnClickListener(v -> startActivity(new Intent(CreateOffer.this, BusinessPageUI.class)));
 
     }
 

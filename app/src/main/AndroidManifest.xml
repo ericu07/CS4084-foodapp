@@ -50,6 +50,7 @@
                 android:value=".Home" />
         </activity>
         <activity android:name=".Home" />
+        <activity android:name=".BusinessPageUI" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />
