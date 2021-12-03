@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import ie.ul.foodapp.activities.business.CreateOffer;
+
 public class LogIn extends AppCompatActivity {
     private EditText user_name, pass_word;
     FirebaseAuth mAuth;
@@ -58,7 +60,7 @@ public class LogIn extends AppCompatActivity {
             mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(task -> {
                 if(task.isSuccessful())
                 {
-                    startActivity(new Intent(LogIn.this, MainActivity.class));
+                    startActivity(new Intent(LogIn.this, CreateOffer.class));
 
                 }
                 else

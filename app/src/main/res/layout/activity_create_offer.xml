@@ -158,7 +158,7 @@
                 android:background="@drawable/border" />
 
             <EditText
-                android:id="@+id/editText_businessName"
+                android:id="@+id/editText_PickUpTime"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:background="#CCFFFF"
@@ -228,13 +228,13 @@
                 android:id="@+id/button_save"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginStart="10dp"
-                android:text="Create"
+                android:layout_weight="1"
                 android:backgroundTint="#9966CC"
+                android:onClick="Create"
+                android:text="Create"
                 android:textColor="#000000"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
         </LinearLayout>
 
     </LinearLayout>

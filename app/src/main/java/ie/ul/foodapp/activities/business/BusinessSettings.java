@@ -111,7 +111,7 @@ public class BusinessSettings extends AppCompatActivity implements TabLayout.OnT
 
         /* UI parts */
 
-        name = findViewById(R.id.editText_businessName);
+        name = findViewById(R.id.editText_PickUpTime);
         name.addTextChangedListener(this);
 
         banner = findViewById(R.id.imageView_businessBanner);

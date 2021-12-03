@@ -17,12 +17,24 @@ public class Offer {
     protected String description;
     protected LocalTime pickup;
     protected double price;
+    private int max = 1000000000;
+    private int min = 1 ;
 
     protected Bitmap offerImage;
     protected Bitmap croppedImage;
 
     public Offer(Business business) {
         this.business = business;
+    }
+
+    public Offer(){
+        business = null;
+        booker = null;
+        ID = (int)Math.floor(Math.random()*(max-min+1)+min);
+        name = null;
+        description = null;
+        pickup = null;
+        price = 0.0;
     }
 
     public Offer(Offer o) {
@@ -52,7 +64,14 @@ public class Offer {
         this.business = business;
     }
 
-    public int getOfferID() {return business.ID;}
+    public int getBusinessID() {return business.ID;}
+
+    public void setID(int ID){
+        this.ID = ID;
+    }
+    public int getID() {
+        return ID;
+    }
 
     public Object getBooker() {
         return booker;

@@ -12,13 +12,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start|bottom"
         android:layout_margin="8dp"
+        android:backgroundTint="#9966CC"
         android:clickable="true"
         android:focusable="true"
-        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
         android:onClick="OnClickFabCancel"
         app:backgroundTint="#000000"
-        android:backgroundTint="#9966CC"
-        />
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_save"
@@ -26,12 +26,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="8dp"
+        android:backgroundTint="#9966CC"
         android:clickable="true"
         android:focusable="true"
-        app:srcCompat="@android:drawable/ic_menu_save"
         android:onClick="OnClickFabSave"
         app:backgroundTint="#000000"
-        android:backgroundTint="#9966CC"/>
+        app:srcCompat="@android:drawable/ic_menu_save"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -82,19 +83,18 @@
                         android:background="@drawable/border"/>
 
                     <EditText
-                        android:id="@+id/editText_businessName"
+                        android:id="@+id/editText_PickUpTime"
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:ems="500"
-                        android:background="#CCFFFF"
-                        android:hint="Enter Business Name Here"
-                        android:textSize="12dp"
-                        android:paddingLeft="5dp"
-                        android:layout_marginRight="2dp"
+                        android:layout_height="48dp"
                         android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp"
                         android:layout_marginBottom="2dp"
+                        android:background="#CCFFFF"
+                        android:ems="500"
+                        android:hint="Enter Business Name Here"
                         android:inputType="textShortMessage"
-                        />
+                        android:paddingLeft="5dp"
+                        android:textSize="12dp" />
 
                 </LinearLayout>
                 <!-- END : NAME -->
@@ -127,14 +127,15 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="end|bottom"
                             android:layout_margin="8dp"
+                            android:backgroundTint="#9966CC"
                             android:clickable="true"
                             android:focusable="true"
                             android:onClick="OnClickFabBusinessBanner"
+                            app:backgroundTint="#000000"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:srcCompat="@android:drawable/ic_menu_gallery"
-                            app:backgroundTint="#000000"
-                            android:backgroundTint="#9966CC"/>
+                            tools:ignore="SpeakableTextPresentCheck" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -234,7 +235,8 @@
                                 android:id="@+id/switch_openThisDay"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:background="#FFCCFF"/>
+                                android:background="#FFCCFF"
+                                tools:ignore="TouchTargetSizeCheck" />
                         </LinearLayout>
                         <!-- END : OPEN THIS DAY -->
 
@@ -270,8 +272,9 @@
                                     android:ems="10"
                                     android:hint="Enter Opening Time Here"
                                     android:inputType="time"
+                                    android:paddingLeft="10dp"
                                     android:textSize="12dp"
-                                    android:paddingLeft="10dp"/>
+                                    tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
                             </LinearLayout>
                             <!-- END : FROM -->
 
@@ -300,8 +303,9 @@
                                     android:ems="10"
                                     android:hint="Enter Closing Time Here"
                                     android:inputType="time"
+                                    android:paddingLeft="10dp"
                                     android:textSize="12dp"
-                                    android:paddingLeft="10dp"/>
+                                    tools:ignore="TouchTargetSizeCheck" />
                             </LinearLayout>
                             <!-- END : TO -->
                         </LinearLayout>
@@ -333,7 +337,8 @@
                         android:id="@+id/mapView"
                         android:layout_width="match_parent"
                         android:layout_height="300dp"
-                        android:layout_margin="2dp" />
+                        android:layout_margin="2dp"
+                        tools:ignore="SpeakableTextPresentCheck" />
                 </LinearLayout>
                 <!-- END : LOCATION -->
 
