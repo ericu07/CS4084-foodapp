@@ -4,25 +4,36 @@ package ie.ul.foodapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-public class Details extends AppCompatActivity {
+import java.util.Objects;
 
+public class Details extends AppCompatActivity {
+    String ID;
+    String curr;
     TextView restName,
             restDescription,
             offerName,
             offerDesc,
             price,
             pickup;
+    Button bookingPage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +47,7 @@ public class Details extends AppCompatActivity {
         offerDesc = findViewById(R.id.offerDesc);
         price = findViewById(R.id.priceInput);
         pickup = findViewById(R.id.inputTime);
+        bookingPage = findViewById(R.id.ReserveOffer);
 
         Intent intent = getIntent();
         String title = intent.getStringExtra("title");
@@ -52,7 +64,7 @@ public class Details extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()){
                                 String description = (String) document.get("description");
                                 offerDesc.setText(description);
-
+                                ID = document.getId();
                                 String cost = (String) document.get("Price");
                                 price.setText(cost);
 
@@ -71,6 +83,22 @@ public class Details extends AppCompatActivity {
 
         restName.setText(title);
         offerName.setText(desc);
+
+    }
+
+    public void OnClickBook(View view){
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        assert currentUser != null;
+        curr = currentUser.getEmail();
+        FirebaseFirestore dataBase = FirebaseFirestore.getInstance();
+        DocumentReference docRef = dataBase.collection("User").document(Objects.requireNonNull(curr));
+         docRef.update("orders", FieldValue.arrayUnion(ID));
+
+        Toast.makeText(Details.this,"You Have Successfully Booked The Offer", Toast.LENGTH_SHORT).show();
+
+    }
+    public void OnClickCancel(View view){
+        startActivity(new Intent(Details.this, Home.class));
 
     }
 }

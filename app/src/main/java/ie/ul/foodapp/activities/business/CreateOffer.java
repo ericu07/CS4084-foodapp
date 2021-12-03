@@ -38,7 +38,7 @@ EditText pickup;
 ImageView image;
 Object BusinessID;
 String curr;
-Button cancel;
+
 
 
     @Override
