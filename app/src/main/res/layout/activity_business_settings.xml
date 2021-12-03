@@ -7,20 +7,6 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start|bottom"
-        android:layout_margin="8dp"
-        android:backgroundTint="#9966CC"
-        android:clickable="true"
-        android:focusable="true"
-        android:onClick="OnClickFabCancel"
-        app:backgroundTint="#000000"
-        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -123,6 +109,7 @@
                             android:backgroundTint="#9966CC"
                             android:clickable="true"
                             android:focusable="true"
+                            android:onClick="OnClickShowOffers"
                             app:backgroundTint="#000000"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"

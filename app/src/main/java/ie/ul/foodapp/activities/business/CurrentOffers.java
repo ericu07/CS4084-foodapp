@@ -5,9 +5,21 @@ import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+
+import java.time.LocalTime;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Semaphore;
+
 import ie.ul.foodapp.R;
-import ie.ul.foodapp.firebase.FirebaseLink;
-import ie.ul.foodapp.model.Business;
 import ie.ul.foodapp.model.Offer;
 
 public class CurrentOffers extends AppCompatActivity {
@@ -16,12 +28,78 @@ public class CurrentOffers extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_current_offers);
+        backgroundLoad_0();
+    }
 
-        Business b = FirebaseLink.getCurrentBusiness();
+    protected void backgroundLoad_0() {
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        assert currentUser != null;
 
-        for (Offer offerModdel : b.getOffers()) {
+        FirebaseFirestore.getInstance()
+                .collection("Business")
+                .document(Objects.requireNonNull(currentUser.getEmail()))
+                .get()
+                .addOnCompleteListener( (task) -> {
+                    long businessId = 0;
+
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            try {
+                                businessId = document.getLong("ID");
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+
+                    backgroundLoad_1(businessId);
+                });
+    }
+
+    protected void backgroundLoad_1(long businessId) {
+        FirebaseFirestore.getInstance()
+                .collection("Offers")
+                .get()
+                .addOnCompleteListener((task) -> {
+                    List<Offer> offers = new LinkedList<>();
+
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            if (document.getLong("Business ID") == businessId) {
+                                Offer o = new Offer();
+
+                                o.setName(document.get("Name").toString());
+                                o.setDescription(document.get("description").toString());
+                                {
+                                    LocalTime pickUpTimeAsLT;
+                                    String pickupTimeAsString = document.get("pickup time").toString();
+
+                                    if (pickupTimeAsString.contains("pm")) {
+                                        String[] time = pickupTimeAsString.split("pm")[0].split(":");
+                                        pickUpTimeAsLT = LocalTime.of(12 + Integer.parseInt(time[0]), time.length > 1 ? Integer.parseInt(time[1]) : 0);
+                                    } else { // pm
+                                        String[] time = pickupTimeAsString.split("am")[0].split(":");
+                                        pickUpTimeAsLT = LocalTime.of(Integer.parseInt(time[0]), time.length > 1 ? Integer.parseInt(time[1]) : 0);
+                                    }
+
+                                    o.setPickup(pickUpTimeAsLT);
+                                }
+                                o.setPrice(Double.parseDouble(document.get("Price").toString()));
+
+                                offers.add(o);
+                            }
+                        }
+                    }
+
+                    backgroundLoad_2(offers);
+                });
+    }
+
+    protected void backgroundLoad_2(List<Offer> offers) {
+        for (Offer o : offers) {
             ie.ul.foodapp.components.Offer offerView = new ie.ul.foodapp.components.Offer(this);
-            offerView.setOffer(offerModdel);
+            offerView.setOffer(o);
             ((LinearLayout)findViewById(R.id.linearLayout_content)).addView(offerView);
         }
     }

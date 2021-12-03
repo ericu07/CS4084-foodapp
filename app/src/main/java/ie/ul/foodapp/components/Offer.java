@@ -83,10 +83,11 @@ public class Offer extends LinearLayout implements ViewTreeObserver.OnGlobalFocu
         if (this.offer == null) {
             this.setVisibility(GONE);
         } else {
-            businessName.setText(this.offer.getBusiness().getName());
+            if (this.offer.getBusiness() != null) { businessName.setText(this.offer.getBusiness().getName()); }
             offerName.setText(this.offer.getName());
             offerPrice.setText(StringUtils.priceToString(this.offer.getPrice()));
             pickupTime.setText(StringUtils.pickupTime(this.offer.getPickup()));
+            description.setText(this.offer.getDescription());
 
             updateLayout();
 

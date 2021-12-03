@@ -22,6 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.Objects;
 
 import ie.ul.foodapp.activities.business.CreateOffer;
+import ie.ul.foodapp.activities.business.CurrentOffers;
 
 public class BusinessPageUI extends AppCompatActivity {
     String curr;
@@ -45,6 +46,7 @@ public class BusinessPageUI extends AppCompatActivity {
     String SundayTo;
     TextView banner;
     FloatingActionButton createOffer;
+    FloatingActionButton showOffers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,12 +59,16 @@ public class BusinessPageUI extends AppCompatActivity {
         to = findViewById(R.id.editTextTime_toTime);
         banner = findViewById(R.id.buss_name);
         createOffer = findViewById(R.id.createOffer);
+        showOffers = findViewById(R.id.showOffers);
 
 
 
     }
     public void OnClickCreateOffer(View view){
      startActivity(new Intent(BusinessPageUI.this, CreateOffer.class));
+    }
+    public void OnClickShowOffers(View view){
+     startActivity(new Intent(BusinessPageUI.this, CurrentOffers.class));
     }
 
     public void updateBussiness() {

@@ -23,18 +23,19 @@ public class Offer {
     protected Bitmap offerImage;
     protected Bitmap croppedImage;
 
-    public Offer(Business business) {
-        this.business = business;
+    public Offer() {
+        this((Business)null);
     }
 
-    public Offer(){
-        business = null;
+    public Offer(Business business) {
+        this.business = business;
         booker = null;
         ID = (int)Math.floor(Math.random()*(max-min+1)+min);
         name = null;
         description = null;
         pickup = null;
         price = 0.0;
+
     }
 
     public Offer(Offer o) {

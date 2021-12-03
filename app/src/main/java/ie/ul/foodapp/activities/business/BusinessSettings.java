@@ -134,8 +134,6 @@ public class BusinessSettings extends AppCompatActivity implements TabLayout.OnT
 
         save = findViewById(R.id.fab_save);
 
-        cancel = findViewById(R.id.fab_cancel);
-
         /* attributes */
 
         u = new Updater(() -> {
