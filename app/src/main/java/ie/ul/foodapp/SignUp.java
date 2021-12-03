@@ -119,7 +119,12 @@ public class SignUp extends AppCompatActivity {
 
                             }
                             Toast.makeText(SignUp.this,"You are successfully Registered", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(SignUp.this, MainActivity.class));
+                            if(typeOfUser.equals("Business")) {
+                                startActivity(new Intent(SignUp.this, BusinessPageUI.class));
+                            }
+                            else{
+                                startActivity(new Intent(SignUp.this, Home.class));
+                            }
                         }
                         else
                         {
