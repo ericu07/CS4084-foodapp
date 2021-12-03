@@ -98,6 +98,8 @@ public class SignUp extends AppCompatActivity {
                                 UserType.document(userName).set(user);
                             }
                             else {
+
+
                                 Business thisBusiness = new Business();
                                 Map<String, Object > business = new HashMap<>();
                                 business.put("email", userName);
@@ -112,15 +114,17 @@ public class SignUp extends AppCompatActivity {
                                 business.put("opening hours saturday", thisBusiness.getOpeningHours(6));
                                 business.put("opening hours sunday", thisBusiness.getOpeningHours(7));
                                 business.put("offers", thisBusiness.getOffers());
+
                                 UserType.document(userName).set(business);
 
                             }
                             Toast.makeText(SignUp.this,"You are successfully Registered", Toast.LENGTH_SHORT).show();
 
-                            if( typeOfUser.equals("User")){
+                            if(typeOfUser.equals("Business")) {
+                                startActivity(new Intent(SignUp.this, BusinessPageUI.class));
+                            }
+                            else{
                                 startActivity(new Intent(SignUp.this, Home.class));
-                            }else{
-                                startActivity(new Intent(SignUp.this, MainActivity.class));
                             }
                         }
                         else

@@ -1,13 +1,14 @@
 package ie.ul.foodapp;
 
+
 import androidx.annotation.NonNull;
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.util.Log;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -23,7 +24,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.protobuf.Value;
-
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,10 +39,12 @@ public class Home extends AppCompatActivity {
     private final ArrayList<String> IDs = new ArrayList<>();
     private Integer busID = 0;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
 
         ArrayList<String> business = new ArrayList<>();
 
@@ -51,7 +53,9 @@ public class Home extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+        //ArrayList<String> items2 =   GetOffers();
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        //adapter = new Adapter(this, items2);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         db.collection("Offers")
@@ -115,6 +119,7 @@ public class Home extends AppCompatActivity {
     }
 
 
+
     private ArrayList<String> getArrayList(){
         //List<Offer> offer = get name of all offers from each business
 
@@ -126,4 +131,19 @@ public class Home extends AppCompatActivity {
         items.add("Fifth Restaurant");
         return items;
     }
+
+    public ArrayList<String> GetOffers(){
+        ArrayList<String>   items = new ArrayList<>();
+        items.add("Pizza");
+        items.add("Chicken soup");
+        items.add("Chinese noodles");
+        items.add("Turkey");
+        items.add("Sandwiches");
+
+        return items;
+    }
+
+
+
+
 }

@@ -45,6 +45,11 @@ public class FirebaseLink {
         Customer
     }
 
+
+
+
+
+
     /**
      * Used to retrieve the current user type (business or customer).
      * @return current type of user.
@@ -53,9 +58,11 @@ public class FirebaseLink {
         CompletableFuture<UserType> uType = new CompletableFuture<>();
 
         // retrieve from db
+
+
+        FirebaseFirestore dataBase = FirebaseFirestore.getInstance();
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         String email = currentUser.getEmail();
-        FirebaseFirestore dataBase = FirebaseFirestore.getInstance();
         DocumentReference docRefUser = dataBase.collection("User").document(email);
         DocumentReference docRefBusiness = dataBase.collection("Business").document(email);
         docRefUser.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -88,7 +95,7 @@ public class FirebaseLink {
             }
         });
 
-        docRefUser.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        docRefBusiness.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
@@ -109,6 +116,8 @@ public class FirebaseLink {
                                 break;
                             }
                         }
+
+
                     } else {
                         Log.d(TAG, "Cant get Current User Type ");
                     }
@@ -346,6 +355,7 @@ public class FirebaseLink {
                         }
                     });
         }
+
 
     }
 

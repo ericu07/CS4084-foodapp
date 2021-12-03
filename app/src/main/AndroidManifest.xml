@@ -11,6 +11,8 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:name=".utils.App"
         android:allowBackup="true"
@@ -33,7 +35,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AlzaSyCsJBs688eNNU6LAKwrCIXRh2bFm5yihs" />
+            android:value= "AIzaSyCsJBs688eNNU6LAKGwrCIXRh2bFm5yjhs"/>
 
         <activity
             android:name=".MapsActivity"
@@ -48,6 +50,7 @@
                 android:value=".Home" />
         </activity>
         <activity android:name=".Home" />
+        <activity android:name=".BusinessPageUI" />
         <activity
             android:name=".MainActivity" />
         <activity
