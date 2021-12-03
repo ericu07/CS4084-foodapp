@@ -36,12 +36,16 @@ public class Home extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private final ArrayList<String> business = new ArrayList<>();
     private final ArrayList<String> offers = new ArrayList<>();
+    private final ArrayList<String> IDs = new ArrayList<>();
+    private Integer busID = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
         ArrayList<String> business = new ArrayList<>();
+
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
@@ -50,32 +54,55 @@ public class Home extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        db.collection("Business")
+        db.collection("Offers")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if(task.isSuccessful()) {
+                        if (task.isSuccessful()) {
                             int count = 0;
-                            for (QueryDocumentSnapshot document : task.getResult()){
-                                int i = 0;
-                                List<String> group = (List<String>) document.get("offers");
-                                while(group.size() != i){
-                                    String name = (String)document.get("name");
-                                    String desc = group.get(i);
-                                    business.add(count, name);
-                                    offers.add(count, desc);
-                                    count++;
-                                    i++;
-                                }
+                            String id = "0";
+                            for (QueryDocumentSnapshot document : task.getResult()) {
 
-                                //business.add(count, name);
-                                //count++;
+                                id = document.get("Business ID").toString();
+                                Log.d("Firebase", " Business ID:" + id);
+
+                                String finalId = id;
+                                int finalCount = count;
+                                db.collection("Business")
+                                        .get()
+                                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                if (task.isSuccessful()) {
+                                                    String busName;
+                                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                                        String bid = document.get("ID").toString();
+                                                        if (bid.equals(finalId)) {
+                                                            Log.d("Firebase", "Business ID: " + bid);
+                                                            busName = (String) document.get("name");
+                                                            Log.d("Firebase", "Name ID: " + busName);
+                                                            business.add(finalCount, busName);
+                                                        }
+                                                    }
+                                                    adapter.notifyDataSetChanged();
+                                                }else {
+                                                        Log.d("Firebase", "Error getting documents: ", task.getException());
+                                                        business.add(finalCount, "Error Business");
+                                                }
+                                            }
+                                        });
+
+                                String name = (String) document.get("Name");
+
+                                offers.add(count, name);
+                                count++;
+
                                 Log.d("Firebase", "Name of Business:" + ((String) document.get("name")));
                                 Log.d("Firebase", document.getId() + " => " + document.getData());
                             }
                             adapter.notifyDataSetChanged();
-                        }else{
+                        } else {
                             Log.d("Firebase", "Error getting documents: ", task.getException());
                         }
                     }
