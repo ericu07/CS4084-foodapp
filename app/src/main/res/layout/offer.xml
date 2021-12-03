@@ -90,41 +90,4 @@
         android:paddingLeft="5dp"/>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="horizontal"
-        tools:visibility="gone">
-
-        <ImageView
-            android:id="@+id/imageView_bookedIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:srcCompat="@drawable/fui_done_check_mark" />
-
-        <Button
-            android:id="@+id/button_book"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            android:backgroundTint="#9966CC"
-            android:text="Book"
-            android:textColor="#000000"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/button_cancelBooking"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_weight="1"
-            android:backgroundTint="#9966CC"
-            android:text="Cancel"
-            android:textColor="#000000"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
 </LinearLayout>
