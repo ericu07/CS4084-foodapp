@@ -24,6 +24,10 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.Objects;
 
+/* The details class corresponds to the Details screen. When a user clicks on the business name and
+   offer, they will be redirected to the details screen which displays additional information about
+   the offer.
+ */
 public class Details extends AppCompatActivity {
     String ID;
     String curr;
@@ -42,6 +46,8 @@ public class Details extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        /* the following will be utilized to alter the placeholder text on the activity_details.xml */
         restName = findViewById(R.id.details_title);
         offerName = findViewById(R.id.offerName);
         offerDesc = findViewById(R.id.offerDesc);
@@ -49,10 +55,13 @@ public class Details extends AppCompatActivity {
         pickup = findViewById(R.id.inputTime);
         bookingPage = findViewById(R.id.ReserveOffer);
 
+        /*grabs information about the business name and offer from the Home card */
         Intent intent = getIntent();
         String title = intent.getStringExtra("title");
         String desc = intent.getStringExtra("description");
 
+        /* pulls the specific offer based on the name, then grabs the additional information about
+           the offer to replace the various textViews on the activity_details.xml */
         db.collection("Offers")
                 .whereEqualTo("Name", desc)
                 .get()

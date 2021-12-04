@@ -58,6 +58,7 @@ public class Home extends AppCompatActivity {
         //adapter = new Adapter(this, items2);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        /* pulls all offers from firestore */
         db.collection("Offers")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -68,11 +69,14 @@ public class Home extends AppCompatActivity {
                             String id = "0";
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
+                                //for each offer, gets the business id will be used to get business name
                                 id = document.get("Business ID").toString();
                                 Log.d("Firebase", " Business ID:" + id);
 
                                 String finalId = id;
                                 int finalCount = count;
+
+                                //pulls all of the current businesses; will get name based on above id
                                 db.collection("Business")
                                         .get()
                                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -82,6 +86,7 @@ public class Home extends AppCompatActivity {
                                                     String busName;
                                                     for (QueryDocumentSnapshot document : task.getResult()) {
                                                         String bid = document.get("ID").toString();
+                                                        //if the ids match, grab and store the business name
                                                         if (bid.equals(finalId)) {
                                                             Log.d("Firebase", "Business ID: " + bid);
                                                             busName = (String) document.get("name");
@@ -97,6 +102,7 @@ public class Home extends AppCompatActivity {
                                             }
                                         });
 
+                                //grabs the name of the offer
                                 String name = (String) document.get("Name");
 
                                 offers.add(count, name);
@@ -119,7 +125,7 @@ public class Home extends AppCompatActivity {
     }
 
 
-
+    /* method is not used but initially used to provide placeholder values */
     private ArrayList<String> getArrayList(){
         //List<Offer> offer = get name of all offers from each business
 
@@ -132,6 +138,7 @@ public class Home extends AppCompatActivity {
         return items;
     }
 
+    /* method not used but initally used to provide placeholder offer names */
     public ArrayList<String> GetOffers(){
         ArrayList<String>   items = new ArrayList<>();
         items.add("Pizza");
