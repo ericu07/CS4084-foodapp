@@ -25,7 +25,6 @@ import ie.ul.foodapp.model.Business;
 import ie.ul.foodapp.model.Offer;
 
 public class CurrentOffers extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

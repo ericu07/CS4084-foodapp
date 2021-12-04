@@ -69,8 +69,12 @@ public class Home extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
                                 //for each offer, gets the business id will be used to get business name
-                                id = document.get("Business ID").toString();
-                                Log.d("Firebase", " Business ID:" + id);
+                                if(document.get("Business ID") == null){
+                                    break;
+                                }else{
+                                    id = document.get("Business ID").toString();
+                                    Log.d("Firebase", " Business ID:" + id);
+                                }
 
                                 String finalId = id;
                                 int finalCount = count;
