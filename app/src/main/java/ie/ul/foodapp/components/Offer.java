@@ -21,13 +21,10 @@ public class Offer extends LinearLayout implements ViewTreeObserver.OnGlobalFocu
 
     ImageView offerImage;
     TextView businessName;
-    ImageView bookedIcon;
     TextView offerName;
     TextView offerPrice;
     TextView pickupTime;
     TextView description;
-    Button book;
-    Button cancelBooking;
 
 
     /* attributes */
@@ -61,15 +58,10 @@ public class Offer extends LinearLayout implements ViewTreeObserver.OnGlobalFocu
 
         offerImage = findViewById(R.id.imageView_offerImage);
         businessName = findViewById(R.id.textView_businessName);
-        bookedIcon =  findViewById(R.id.imageView_bookedIcon);
         offerName = findViewById(R.id.textView_offerName);
         offerPrice = findViewById(R.id.textView_offerPrice);
         pickupTime = findViewById(R.id.textView_pickupTime);
         description = findViewById(R.id.textView_description);
-        book = findViewById(R.id.button_book);
-        book.setOnClickListener(this::onClickButtonBook);
-        cancelBooking = findViewById(R.id.button_cancelBooking);
-        cancelBooking.setOnClickListener(this::onClickButtonCancelBooking);
 
         this.getViewTreeObserver().addOnGlobalFocusChangeListener(this);
         this.setVisibility(GONE);
@@ -83,7 +75,9 @@ public class Offer extends LinearLayout implements ViewTreeObserver.OnGlobalFocu
         if (this.offer == null) {
             this.setVisibility(GONE);
         } else {
-            if (this.offer.getBusiness() != null) { businessName.setText(this.offer.getBusiness().getName()); }
+            if (this.offer.getBusiness() != null) {
+                businessName.setText(this.offer.getBusiness().getName());
+            }
             offerName.setText(this.offer.getName());
             offerPrice.setText(StringUtils.priceToString(this.offer.getPrice()));
             pickupTime.setText(StringUtils.pickupTime(this.offer.getPickup()));
@@ -99,27 +93,9 @@ public class Offer extends LinearLayout implements ViewTreeObserver.OnGlobalFocu
         if (isFocused()) {
             offerImage.setImageBitmap(offer.getOfferImage());
             description.setVisibility(VISIBLE);
-
-            if (offer.getBooker() != null) {
-                bookedIcon.setVisibility(VISIBLE);
-                book.setVisibility(GONE);
-                cancelBooking.setVisibility(VISIBLE);
-            } else {
-                bookedIcon.setVisibility(GONE);
-                book.setVisibility(VISIBLE);
-                cancelBooking.setVisibility(GONE);
-            }
         } else {
-            if (offer.getBooker() != null) {
-                bookedIcon.setVisibility(VISIBLE);
-            } else {
-                bookedIcon.setVisibility(GONE);
-            }
-
             offerImage.setImageBitmap(offer.getCroppedImage());
             description.setVisibility(GONE);
-            book.setVisibility(GONE);
-            cancelBooking.setVisibility(GONE);
         }
     }
 
@@ -132,16 +108,6 @@ public class Offer extends LinearLayout implements ViewTreeObserver.OnGlobalFocu
 
     @Override
     public void onGlobalFocusChanged(View oldFocus, View newFocus) {
-        updateLayout();
-    }
-
-    public void onClickButtonBook(View view) {
-        offer.setBooker(new Object()); // TODO link with DB
-        updateLayout();
-    }
-
-    public void onClickButtonCancelBooking(View view) {
-        offer.setBooker(null); // TODO link with DB
         updateLayout();
     }
 

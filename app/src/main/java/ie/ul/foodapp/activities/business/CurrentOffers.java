@@ -1,5 +1,6 @@
 package ie.ul.foodapp.activities.business;
 
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 
@@ -20,6 +21,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Semaphore;
 
 import ie.ul.foodapp.R;
+import ie.ul.foodapp.model.Business;
 import ie.ul.foodapp.model.Offer;
 
 public class CurrentOffers extends AppCompatActivity {
@@ -41,23 +43,26 @@ public class CurrentOffers extends AppCompatActivity {
                 .get()
                 .addOnCompleteListener( (task) -> {
                     long businessId = 0;
+                    Business business = null;
 
                     if (task.isSuccessful()) {
                         DocumentSnapshot document = task.getResult();
                         if (document.exists()) {
                             try {
                                 businessId = document.getLong("ID");
+                                business = new Business();
+                                business.setName(document.getString("name"));
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                         }
                     }
 
-                    backgroundLoad_1(businessId);
+                    backgroundLoad_1(businessId, business);
                 });
     }
 
-    protected void backgroundLoad_1(long businessId) {
+    protected void backgroundLoad_1(long businessId, Business business) {
         FirebaseFirestore.getInstance()
                 .collection("Offers")
                 .get()
@@ -69,6 +74,7 @@ public class CurrentOffers extends AppCompatActivity {
                             if (document.getLong("Business ID") == businessId) {
                                 Offer o = new Offer();
 
+                                o.setBusiness(business);
                                 o.setName(document.get("Name").toString());
                                 o.setDescription(document.get("description").toString());
                                 {
@@ -86,6 +92,7 @@ public class CurrentOffers extends AppCompatActivity {
                                     o.setPickup(pickUpTimeAsLT);
                                 }
                                 o.setPrice(Double.parseDouble(document.get("Price").toString()));
+                                o.setOfferImage(BitmapFactory.decodeResource(getResources(), R.drawable.food_banner));
 
                                 offers.add(o);
                             }
