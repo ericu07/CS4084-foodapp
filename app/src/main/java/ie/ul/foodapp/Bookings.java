@@ -17,6 +17,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
+/** unused class but could be implemented with slight changes to present a bookings screen
+ *  that displays all of the bookings that the customer books. Would follow a similar format
+ *  to the Home.java; however, only pull offers that the current user booked */
 public class Bookings extends AppCompatActivity {
     Adapter adapter;
     private final ArrayList<String> bookedItems = new ArrayList<>();
@@ -34,6 +37,9 @@ public class Bookings extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        /** old version for pulling information from firebase; needs to be updated
+         *  to fit the new format. Based on the old format of how information was stored
+         *  in firebase, the following grabs orders booked by the user*/
         db.collection("User")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -71,6 +77,7 @@ public class Bookings extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
+    /* orginally used for placeholders but implemented firebase */
     private ArrayList<String> getBookedItems(){
         ArrayList<String> items = new ArrayList<>();
         items.add("First Booking");
@@ -80,6 +87,7 @@ public class Bookings extends AppCompatActivity {
         return items;
     }
 
+    /* orginally used for placeholders but implemented firebase */
     private ArrayList<String> getDesc(){
         ArrayList<String> desc = new ArrayList<>();
         desc.add("First Booking Desc");

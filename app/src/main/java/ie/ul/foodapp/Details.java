@@ -69,7 +69,6 @@ public class Details extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(task.isSuccessful()) {
-
                             for (QueryDocumentSnapshot document : task.getResult()){
                                 String description = (String) document.get("description");
                                 offerDesc.setText(description);

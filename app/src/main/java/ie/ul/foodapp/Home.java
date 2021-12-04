@@ -48,7 +48,6 @@ public class Home extends AppCompatActivity {
 
         ArrayList<String> business = new ArrayList<>();
 
-
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
